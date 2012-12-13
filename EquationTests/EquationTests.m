@@ -127,4 +127,53 @@ Equation* e;
 // 実は虚数や0で割り算した場合など，計算結果が実数で表せない値になってしまったとき
 // nan という特殊な数値になります。
 // それでテストがパスしてしまったのですね。
+
+
+// x^2 - 7x - 30 = 0 をテスト
+// 実数解 2つの場合。
+- (void)test5
+{
+    e = [[Equation alloc] initWithA:1 b:-7 c:-30];
+    
+    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
+    // accuracy とは誤差のことです。
+    STAssertEqualsWithAccuracy(10.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-3.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// x^2 - 10x + 25 = 0 をテスト
+// 実数解 1つの場合。
+- (void)test6
+{
+    e = [[Equation alloc] initWithA:1 b:10 c:25];
+    
+    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
+    // accuracy とは誤差のことです。
+    STAssertEqualsWithAccuracy(5.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(5.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// x^2 + 10x + 9 = 0 をテスト
+// 虚数解 2つの場合。
+- (void)test7
+{
+    e = [[Equation alloc] initWithA:4 b:4 c:5];
+    
+    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
+    // accuracy とは誤差のことです。
+    STAssertEqualsWithAccuracy(-0.5, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-0.5, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(1.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(-1.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+
+
 @end
