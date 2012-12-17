@@ -148,7 +148,7 @@ Equation* e;
 // 実数解 1つの場合。
 - (void)test6
 {
-    e = [[Equation alloc] initWithA:1 b:10 c:25];
+    e = [[Equation alloc] initWithA:1 b:-10 c:25];
     
     // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
     // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
@@ -159,7 +159,7 @@ Equation* e;
     STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
-// x^2 + 10x + 9 = 0 をテスト
+// 4x^2 + 4x + 5 = 0 をテスト
 // 虚数解 2つの場合。
 - (void)test7
 {
