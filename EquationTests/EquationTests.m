@@ -150,7 +150,7 @@ Equation* e;
 {
     e = [[Equation alloc] initWithA:1 b:-10 c:25];
     
-    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+     // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
     // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
     // accuracy とは誤差のことです。
     STAssertEqualsWithAccuracy(5.0, [e real1], 0.00001, @"real1 error");
