@@ -174,6 +174,36 @@ Equation* e;
     STAssertEqualsWithAccuracy(-1.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
+// 4x + 8 = 0 をテスト
+//a=0,b≠0のとき
+- (void)test8
+{
+    e = [[Equation alloc] initWithA:0 b:4 c:8];
+    
+    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
+    // accuracy とは誤差のことです。
+    STAssertEqualsWithAccuracy(-2.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(0.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
+// 4x^2 -　16 = 0 をテスト
+// a≠0,b=0のとき
+- (void)test9
+{
+    e = [[Equation alloc] initWithA:4 b:0 c:-16];
+    
+    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
+    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
+    // accuracy とは誤差のことです。
+    STAssertEqualsWithAccuracy(2.0, [e real1], 0.00001, @"real1 error");
+    STAssertEqualsWithAccuracy(-2.0, [e real2], 0.00001, @"real2 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
+    STAssertEqualsWithAccuracy(0.0, [e imaginary2], 0.00001, @"imaginary2 error");
+}
+
 
 
 @end
