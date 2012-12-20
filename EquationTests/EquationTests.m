@@ -174,20 +174,6 @@ Equation* e;
     STAssertEqualsWithAccuracy(-1.0, [e imaginary2], 0.00001, @"imaginary2 error");
 }
 
-// x^2 + 3ix - (1+3i) = 0 をテスト
-// テストケースを考えるにあたって、虚数解１つと実数解１つの場合が考えられる。以下にテストコードを示し実行したが繰り返すうちにエラーが出たり出なかったりしてよく分からなかった。
-- (void)test8
-{
-    e = [[Equation alloc] initWithA:1 b:3i c:-1-3i];
-    
-    // STAssertEqualsWithAccuracy は浮動小数点演算をテストするときに使います。
-    // 浮動小数点演算では誤差が発生するので，誤差の範囲内で等しいことを確かめる必要があります。
-    // accuracy とは誤差のことです。
-    STAssertEqualsWithAccuracy(1.0, [e real1], 0.00001, @"real1 error");
-    STAssertEqualsWithAccuracy(-1.0, [e real2], 0.00001, @"real2 error");
-    STAssertEqualsWithAccuracy(0.0, [e imaginary1], 0.00001, @"imaginary1 error");
-    STAssertEqualsWithAccuracy(-3.0, [e imaginary2], 0.00001, @"imaginary2 error");
-}
 
 
 @end
